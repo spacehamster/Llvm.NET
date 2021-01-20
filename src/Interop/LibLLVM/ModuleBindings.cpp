@@ -1,30 +1,36 @@
 #include <type_traits>
 #include <llvm/IR/Module.h>
+#include <llvm/Bitcode/ReaderWriter.h>
+#include <llvm/Bitcode/BitstreamReader.h>
+#include <llvm/IR/LLVMContext.h>
 #include "libllvm-c/ModuleBindings.h"
+#include "NotImplementedException.h"
 
 using namespace llvm;
 
 DEFINE_SIMPLE_CONVERSION_FUNCTIONS( NamedMDNode, LLVMNamedMDNodeRef )
+DEFINE_SIMPLE_CONVERSION_FUNCTIONS(Comdat, LLVMComdatRef)
+DEFINE_ISA_CONVERSION_FUNCTIONS(Value, LLVMValueRef)
+
+inline LLVMModuleRef* wrap(const Module** Tys) {
+    return reinterpret_cast<LLVMModuleRef*>(const_cast<Module**>(Tys));
+}
 
 extern "C"
 {
     LLVMValueRef LibLLVMGetOrInsertFunction( LLVMModuleRef module, const char* name, LLVMTypeRef functionType )
     {
-        auto pModule = unwrap( module );
-        auto pSignature = cast< FunctionType >( unwrap( functionType ) );
-        return wrap( pModule->getOrInsertFunction( name, pSignature ).getCallee() );
+        throw NotImplementedException();
     }
 
     char const* LibLLVMGetModuleSourceFileName( LLVMModuleRef module )
     {
-        auto pModule = unwrap( module );
-        return pModule->getSourceFileName( ).c_str( );
+        throw NotImplementedException();
     }
 
     void LibLLVMSetModuleSourceFileName( LLVMModuleRef module, char const* name )
     {
-        auto pModule = unwrap( module );
-        pModule->setSourceFileName( name );
+        throw NotImplementedException();
     }
 
     char const* LibLLVMGetModuleName( LLVMModuleRef module )
@@ -35,8 +41,7 @@ extern "C"
 
     LLVMValueRef LibLLVMGetGlobalAlias( LLVMModuleRef module, char const* name )
     {
-        auto pModule = unwrap( module );
-        return wrap( pModule->getNamedAlias( name ) );
+        throw NotImplementedException();
     }
 
     LLVMComdatRef LibLLVMModuleInsertOrUpdateComdat( LLVMModuleRef module, char const* name, LLVMComdatSelectionKind kind )
@@ -78,21 +83,11 @@ extern "C"
 
     LLVMValueRef LibLLVMModuleGetFirstGlobalAlias( LLVMModuleRef M )
     {
-        Module *Mod = unwrap( M );
-        Module::alias_iterator I = Mod->alias_begin( );
-        if ( I == Mod->alias_end( ) )
-            return nullptr;
-
-        return wrap( &*I );
+        throw NotImplementedException();
     }
 
     LLVMValueRef LibLLVMModuleGetNextGlobalAlias( LLVMValueRef valueRef )
     {
-        GlobalAlias *pGA = unwrap<GlobalAlias>( valueRef );
-        Module::alias_iterator I( pGA );
-        if ( ++I == pGA->getParent( )->alias_end( ) )
-            return nullptr;
-
-        return wrap( &*I );
+        throw NotImplementedException();
     }
 }

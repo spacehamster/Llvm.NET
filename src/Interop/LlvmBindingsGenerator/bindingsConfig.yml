@@ -596,6 +596,9 @@ FunctionBindings:
   - Name: LibLLVMDisposeValueCache
     IsProjected: False
 
+  - Name: LibLLVMParseBitcodeFile
+    ReturnTransform: !Status {}
+
   - Name: LLVMVerifyModule
     ReturnTransform: !Status {}
     ParamTransforms:

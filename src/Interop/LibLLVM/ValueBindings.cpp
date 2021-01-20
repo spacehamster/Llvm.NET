@@ -14,6 +14,7 @@
 using namespace llvm;
 
 DEFINE_SIMPLE_CONVERSION_FUNCTIONS( ValueCache, LibLLVMValueCacheRef );
+DEFINE_ISA_CONVERSION_FUNCTIONS(Metadata, LLVMMetadataRef)
 
 extern "C"
 {
@@ -54,8 +55,11 @@ extern "C"
 
     void LibLLVMGlobalVariableAddDebugExpression( LLVMValueRef /*GlobalVariable*/ globalVar, LLVMMetadataRef exp )
     {
-        auto gv = unwrap<GlobalVariable>( globalVar );
-        gv->addDebugInfo( unwrap<DIGlobalVariableExpression>( exp ));
+#if LLVM_VERSION_MAJOR == 3
+#else
+        auto gv = unwrap<GlobalVariable>(globalVar);
+        gv->addDebugInfo(unwrap<DIGlobalVariableExpression>(exp));
+#endif
     }
 
     void LibLLVMFunctionAppendBasicBlock( LLVMValueRef /*Function*/ function, LLVMBasicBlockRef block )
@@ -87,5 +91,18 @@ extern "C"
     intptr_t LibLLVMValueCacheLookup( LibLLVMValueCacheRef cacheRef, LLVMValueRef valueRef )
     {
         return unwrap( cacheRef )->lookup( unwrap( valueRef ) );
+    }
+
+    void LibLLVMGetRawValues(LLVMValueRef c, char* resultBuffer) {
+        auto pData = unwrap<ConstantDataSequential>(c);
+        unsigned size = pData->getRawDataValues().size();
+        auto str = pData->getRawDataValues();
+        memcpy(resultBuffer,
+            (const uint8_t*)pData->getRawDataValues().begin(), size);
+    }
+    unsigned LibLLVMGetRawValueSize(LLVMValueRef c) {
+        auto pData = unwrap<ConstantDataSequential>(c);
+        unsigned size = pData->getRawDataValues().size();
+        return size;
     }
 }

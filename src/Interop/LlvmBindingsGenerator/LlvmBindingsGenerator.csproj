@@ -27,6 +27,9 @@
         <None Update="BindingsConfig.yml">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
+        <None Update="StrippedSymbols.txt">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
         <None Update="Templates\T4\ContextHandleTemplate.tt">
             <Generator>TextTemplatingFilePreprocessor</Generator>
             <LastGenOutput>ContextHandleTemplate.cs</LastGenOutput>

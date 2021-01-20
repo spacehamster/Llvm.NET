@@ -1,23 +1,17 @@
 #ifndef _LIBLLVM_DIBUILDERBINDINGS_H_
+#define _LIBLLVM_DIBUILDERBINDINGS_H_
+
 #include <stdint.h>
 #include "llvm-c/Core.h"
-#include "llvm-c/DebugInfo.h"
+#include "legacy/Types.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-enum LibLLVMDwarfSourceLanguage
-{
-#define HANDLE_DW_LANG(ID, NAME, LOWER_BOUND, VERSION, VENDOR)                 \
-  LibLLVMDwarfSourceLanguage##NAME = ID,
-#include "llvm/BinaryFormat/Dwarf.def"
-#undef HANDLE_DW_LANG
-};
-
 LLVMMetadataRef LibLLVMDIBuilderCreateCompileUnit(
     LLVMDIBuilderRef Builder,
-    LibLLVMDwarfSourceLanguage Lang,
+    unsigned Lang,
     LLVMMetadataRef FileRef,
     const char* Producer,
     size_t ProducerLen,
@@ -35,5 +29,6 @@ LLVMMetadataRef LibLLVMDIBuilderCreateCompileUnit(
 #ifdef __cplusplus
 }
 #endif
+
 
 #endif

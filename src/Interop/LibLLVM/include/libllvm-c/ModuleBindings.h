@@ -2,7 +2,7 @@
 #define _MODULE_BINDINGS_H_
 
 #include "llvm-c/Core.h"
-#include "llvm-c/Comdat.h"
+#include "legacy/Types.h"
 
 #ifdef __cplusplus
 extern "C" {

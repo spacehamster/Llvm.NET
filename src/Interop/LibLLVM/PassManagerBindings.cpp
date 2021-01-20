@@ -18,9 +18,7 @@
 #include <llvm/IR/Module.h>
 #include <llvm/Transforms/Instrumentation.h>
 #include <llvm/PassRegistry.h>
-#include "llvm/Transforms/Instrumentation/AddressSanitizer.h"
-#include <llvm/Transforms/Instrumentation/MemorySanitizer.h>
-#include <llvm/Transforms/Instrumentation/ThreadSanitizer.h>
+#include "NotImplementedException.h"
 
 using namespace llvm;
 
@@ -38,32 +36,26 @@ extern "C"
 
     void LibLLVMAddAddressSanitizerFunctionPass( LLVMPassManagerRef PM )
     {
-        unwrap( PM )->add( createAddressSanitizerFunctionPass( ) );
+        throw NotImplementedException();
     }
 
     void LibLLVMAddAddressSanitizerModulePass( LLVMPassManagerRef PM )
     {
-        unwrap( PM )->add( createModuleAddressSanitizerLegacyPassPass( ) );
+        throw NotImplementedException();
     }
 
     void LibLLVMAddThreadSanitizerPass( LLVMPassManagerRef PM )
     {
-        unwrap( PM )->add( createThreadSanitizerLegacyPassPass( ) );
+        throw NotImplementedException();
     }
 
     void LibLLVMAddMemorySanitizerPass( LLVMPassManagerRef PM )
     {
-        unwrap( PM )->add( createMemorySanitizerLegacyPassPass( ) );
+        throw NotImplementedException();
     }
 
     void LibLLVMAddDataFlowSanitizerPass( LLVMPassManagerRef PM, int ABIListFilesNum, const char **ABIListFiles )
     {
-        std::vector<std::string> ABIListFilesVec;
-        for( int i = 0; i != ABIListFilesNum; ++i )
-        {
-            ABIListFilesVec.push_back( ABIListFiles[ i ] );
-        }
-
-        unwrap( PM )->add( createDataFlowSanitizerPass( ABIListFilesVec ) );
+        throw NotImplementedException();
     }
 }

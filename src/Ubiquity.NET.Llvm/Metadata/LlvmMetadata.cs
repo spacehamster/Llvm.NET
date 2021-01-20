@@ -28,9 +28,6 @@ namespace Ubiquity.NET.Llvm
         /// <summary>Local value as metadata</summary>
         LocalAsMetadata = LibLLVMMetadataKind.LibLLVMMetadataKind_LocalAsMetadata,
 
-        /// <summary>Distinct metadata place holder</summary>
-        DistinctMDOperandPlaceholder = LibLLVMMetadataKind.LibLLVMMetadataKind_DistinctMDOperandPlaceholder,
-
         /// <summary>Metadata tuple</summary>
         MDTuple = LibLLVMMetadataKind.LibLLVMMetadataKind_MDTuple,
 
@@ -39,9 +36,6 @@ namespace Ubiquity.NET.Llvm
 
         /// <summary>Debug info expression</summary>
         DIExpression = LibLLVMMetadataKind.LibLLVMMetadataKind_DIExpression,
-
-        /// <summary>Debug info global variable expression</summary>
-        DIGlobalVariableExpression = LibLLVMMetadataKind.LibLLVMMetadataKind_DIGlobalVariableExpression,
 
         /// <summary>Generic Debug info node</summary>
         GenericDINode = LibLLVMMetadataKind.LibLLVMMetadataKind_GenericDINode,
@@ -102,12 +96,6 @@ namespace Ubiquity.NET.Llvm
 
         /// <summary>Debug info for an imported entity</summary>
         DIImportedEntity = LibLLVMMetadataKind.LibLLVMMetadataKind_DIImportedEntity,
-
-        /// <summary>Debug info for a macro</summary>
-        DIMacro = LibLLVMMetadataKind.LibLLVMMetadataKind_DIMacro,
-
-        /// <summary>Debug info for a macro file</summary>
-        DIMacroFile = LibLLVMMetadataKind.LibLLVMMetadataKind_DIMacroFile,
     }
 
     /// <summary>Root of the LLVM Metadata hierarchy</summary>
@@ -176,9 +164,6 @@ namespace Ubiquity.NET.Llvm
                 case MetadataKind.LocalAsMetadata:
                     return new LocalAsMetadata( handle );
 
-                case MetadataKind.DistinctMDOperandPlaceholder:
-                    throw new NotSupportedException( ); // return new DistinctMDOperandPlaceHodler( handle );
-
                 case MetadataKind.MDTuple:
                     return new MDTuple( handle );
 
@@ -187,9 +172,6 @@ namespace Ubiquity.NET.Llvm
 
                 case MetadataKind.DIExpression:
                     return new DIExpression( handle );
-
-                case MetadataKind.DIGlobalVariableExpression:
-                    return new DIGlobalVariableExpression( handle );
 
                 case MetadataKind.GenericDINode:
                     return new GenericDINode( handle );
@@ -250,12 +232,6 @@ namespace Ubiquity.NET.Llvm
 
                 case MetadataKind.DIImportedEntity:
                     return new DIImportedEntity( handle );
-
-                case MetadataKind.DIMacro:
-                    return new DIMacro( handle );
-
-                case MetadataKind.DIMacroFile:
-                    return new DIMacroFile( handle );
 
                 default:
 #pragma warning disable RECS0083 // Intentional trigger to catch changes in underlying LLVM libs

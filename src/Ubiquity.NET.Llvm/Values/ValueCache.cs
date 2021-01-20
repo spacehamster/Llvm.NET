@@ -133,9 +133,6 @@ namespace Ubiquity.NET.Llvm.Values
             case LibLLVMValueKind.GlobalVariableKind:
                 return new GlobalVariable( handle );
 
-            case LibLLVMValueKind.GlobalIFuncKind:
-                return new GlobalIFunc( handle );
-
             case LibLLVMValueKind.UndefValueKind:
                 return new UndefValue( handle );
 
@@ -323,21 +320,6 @@ namespace Ubiquity.NET.Llvm.Values
 
             case LibLLVMValueKind.LandingPadKind:
                 return new LandingPad( handle );
-
-            case LibLLVMValueKind.CleanupRetKind:
-                return new CleanupReturn( handle );
-
-            case LibLLVMValueKind.CatchRetKind:
-                return new CatchReturn( handle );
-
-            case LibLLVMValueKind.CatchPadKind:
-                return new CatchPad( handle );
-
-            case LibLLVMValueKind.CleanupPadKind:
-                return new CleanupPad( handle );
-
-            case LibLLVMValueKind.CatchSwitchKind:
-                return new CatchSwitch( handle );
 
             // Default to constant, Instruction or generic base Value
             default:

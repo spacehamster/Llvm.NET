@@ -27,15 +27,17 @@ namespace LlvmBindingsGenerator
                 return -1;
             }
 
-            string llvmRoot = args[ 0 ];
-            string extensionsRoot = args[ 1 ];
-            string outputPath = args.Length > 2 ? args[ 2 ] : System.Environment.CurrentDirectory;
+            string llvmRoot = Path.GetFullPath(args[ 0 ]);
+            string extensionsRoot = Path.GetFullPath(args[ 1 ]);
+            string outputPath = args.Length > 2 ? Path.GetFullPath(args[ 2 ]) : System.Environment.CurrentDirectory;
 
             // read in the binding configuration from the YAML file
             // It is hoped, that going forward, the YAML file is the only thing that needs to change
             // but either way, helps keep the declarative part in a more easily understood format.
             string configPath = Path.Combine( Path.GetDirectoryName( Assembly.GetExecutingAssembly().Location ), "BindingsConfig.yml");
-            var config = new ReadOnlyConfig( YamlConfiguration.ParseFrom( configPath ) );
+            var yamlConfig = YamlConfiguration.ParseFrom( configPath );
+            AddStrippedFunctions( yamlConfig, Path.Combine( Path.GetDirectoryName( Assembly.GetExecutingAssembly().Location ), "StrippedSymbols.txt" ) );
+            var config = new ReadOnlyConfig( yamlConfig );
             var library = new LibLlvmGeneratorLibrary( config, llvmRoot, extensionsRoot, outputPath );
             Driver.Run( library );
             return diagnostics.ErrorCount;
@@ -45,6 +47,28 @@ namespace LlvmBindingsGenerator
                 2) add entries to APIDocs for elements in generated docs but not in API Docs
                 3) Leave everything else in APIDocs, intact
             */
+        }
+
+        private static void AddStrippedFunctions(YamlConfiguration config, string path)
+        {
+            foreach(string line in File.ReadAllLines( path ))
+            {
+                if(config.FunctionBindings.ContainsKey( line ))
+                {
+                    var binding = config.FunctionBindings[line];
+                    binding.IsExported = false;
+                    binding.IsProjected = false;
+                }
+                else
+                {
+                    config.FunctionBindings.Add( new YamlFunctionBinding()
+                    {
+                        Name = line,
+                        IsExported = false,
+                        IsProjected = false
+                    } );
+                }
+            }
         }
     }
 }

@@ -270,564 +270,112 @@ namespace Ubiquity.NET.Llvm.Interop
         /// <param name="registrations">Flags indicating which components to register/enable</param>
         internal static void RegisterAArch64( TargetRegistrations registrations = TargetRegistrations.All )
         {
-            if( registrations.HasFlag( TargetRegistrations.Target ) )
-            {
-                LLVMInitializeAArch64Target( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.TargetInfo ) )
-            {
-                LLVMInitializeAArch64TargetInfo( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.TargetMachine ) )
-            {
-                LLVMInitializeAArch64TargetMC( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.AsmPrinter ) )
-            {
-                LLVMInitializeAArch64AsmPrinter( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.Disassembler ) )
-            {
-                LLVMInitializeAArch64Disassembler( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.AsmParser ) )
-            {
-                LLVMInitializeAArch64AsmParser( );
-            }
+            throw new StrippedFunctionException();
         }
 
         /// <summary>Registers components for AMDGPU targets</summary>
         /// <param name="registrations">Flags indicating which components to register/enable</param>
         internal static void RegisterAMDGPU( TargetRegistrations registrations = TargetRegistrations.All )
         {
-            if( registrations.HasFlag( TargetRegistrations.Target ) )
-            {
-                LLVMInitializeAMDGPUTarget( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.TargetInfo ) )
-            {
-                LLVMInitializeAMDGPUTargetInfo( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.TargetMachine ) )
-            {
-                LLVMInitializeAMDGPUTargetMC( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.AsmPrinter ) )
-            {
-                LLVMInitializeAMDGPUAsmPrinter( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.Disassembler ) )
-            {
-                LLVMInitializeAMDGPUDisassembler( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.AsmParser ) )
-            {
-                LLVMInitializeAMDGPUAsmParser( );
-            }
+            throw new StrippedFunctionException();
         }
 
         /// <summary>Registers components for ARM 32bit and 16bit thumb targets</summary>
         /// <param name="registrations">Flags indicating which components to register/enable</param>
         internal static void RegisterARM( TargetRegistrations registrations = TargetRegistrations.All )
         {
-            if( registrations.HasFlag( TargetRegistrations.Target ) )
-            {
-                LLVMInitializeARMTarget( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.TargetInfo ) )
-            {
-                LLVMInitializeARMTargetInfo( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.TargetMachine ) )
-            {
-                LLVMInitializeARMTargetMC( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.AsmPrinter ) )
-            {
-                LLVMInitializeARMAsmPrinter( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.Disassembler ) )
-            {
-                LLVMInitializeARMDisassembler( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.AsmParser ) )
-            {
-                LLVMInitializeARMAsmParser( );
-            }
+            throw new StrippedFunctionException();
         }
 
         /// <summary>Registers components for the Berkeley Packet Filter (BPF) target</summary>
         /// <param name="registrations">Flags indicating which components to register/enable</param>
         internal static void RegisterBPF( TargetRegistrations registrations = TargetRegistrations.All )
         {
-            if( registrations.HasFlag( TargetRegistrations.Target ) )
-            {
-                LLVMInitializeBPFTarget( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.TargetInfo ) )
-            {
-                LLVMInitializeBPFTargetInfo( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.TargetMachine ) )
-            {
-                LLVMInitializeBPFTargetMC( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.AsmPrinter ) )
-            {
-                LLVMInitializeBPFAsmPrinter( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.Disassembler ) )
-            {
-                LLVMInitializeBPFDisassembler( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.AsmParser ) )
-            {
-                LLVMInitializeBPFAsmParser( );
-            }
+            throw new StrippedFunctionException();
         }
 
         /// <summary>Registers components for the Hexagon CPU</summary>
         /// <param name="registrations">Flags indicating which components to register/enable</param>
         internal static void RegisterHexagon( TargetRegistrations registrations = TargetRegistrations.All )
         {
-            if( registrations.HasFlag( TargetRegistrations.Target ) )
-            {
-                LLVMInitializeHexagonTarget( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.TargetInfo ) )
-            {
-                LLVMInitializeHexagonTargetInfo( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.TargetMachine ) )
-            {
-                LLVMInitializeHexagonTargetMC( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.AsmPrinter ) )
-            {
-                LLVMInitializeHexagonAsmPrinter( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.Disassembler ) )
-            {
-                LLVMInitializeHexagonDisassembler( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.AsmParser ) )
-            {
-                LLVMInitializeHexagonAsmParser( );
-            }
+            throw new StrippedFunctionException();
         }
 
         /// <summary>Registers components for the Lanai target</summary>
         /// <param name="registrations">Flags indicating which components to register/enable</param>
         internal static void RegisterLanai( TargetRegistrations registrations = TargetRegistrations.All )
         {
-            if( registrations.HasFlag( TargetRegistrations.Target ) )
-            {
-                LLVMInitializeLanaiTarget( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.TargetInfo ) )
-            {
-                LLVMInitializeLanaiTargetInfo( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.TargetMachine ) )
-            {
-                LLVMInitializeLanaiTargetMC( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.AsmPrinter ) )
-            {
-                LLVMInitializeLanaiAsmPrinter( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.Disassembler ) )
-            {
-                LLVMInitializeLanaiDisassembler( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.AsmParser ) )
-            {
-                LLVMInitializeLanaiAsmParser( );
-            }
+            throw new StrippedFunctionException();
         }
 
         /// <summary>Registers components for MIPS targets</summary>
         /// <param name="registrations">Flags indicating which components to register/enable</param>
         internal static void RegisterMips( TargetRegistrations registrations = TargetRegistrations.All )
         {
-            if( registrations.HasFlag( TargetRegistrations.Target ) )
-            {
-                LLVMInitializeMipsTarget( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.TargetInfo ) )
-            {
-                LLVMInitializeMipsTargetInfo( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.TargetMachine ) )
-            {
-                LLVMInitializeMipsTargetMC( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.AsmPrinter ) )
-            {
-                LLVMInitializeMipsAsmPrinter( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.Disassembler ) )
-            {
-                LLVMInitializeMipsDisassembler( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.AsmParser ) )
-            {
-                LLVMInitializeMipsAsmParser( );
-            }
+            throw new StrippedFunctionException();
         }
 
         /// <summary>Registers components for MSP430 targets</summary>
         /// <param name="registrations">Flags indicating which components to register/enable</param>
         internal static void RegisterMSP430( TargetRegistrations registrations = TargetRegistrations.All )
         {
-            if( registrations.HasFlag( TargetRegistrations.Target ) )
-            {
-                LLVMInitializeMSP430Target( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.TargetInfo ) )
-            {
-                LLVMInitializeMSP430TargetInfo( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.TargetMachine ) )
-            {
-                LLVMInitializeMSP430TargetMC( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.AsmPrinter ) )
-            {
-                LLVMInitializeMSP430AsmPrinter( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.Disassembler ) )
-            {
-                LLVMInitializeMSP430Disassembler( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.AsmParser ) )
-            {
-                LLVMInitializeMSP430AsmParser( );
-            }
+            throw new StrippedFunctionException();
         }
 
         /// <summary>Registers components for the NVPTX targets</summary>
         /// <param name="registrations">Flags indicating which components to register/enable</param>
         internal static void RegisterNVPTX( TargetRegistrations registrations = TargetRegistrations.All )
         {
-            if( registrations.HasFlag( TargetRegistrations.Target ) )
-            {
-                LLVMInitializeNVPTXTarget( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.TargetInfo ) )
-            {
-                LLVMInitializeNVPTXTargetInfo( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.TargetMachine ) )
-            {
-                LLVMInitializeNVPTXTargetMC( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.AsmPrinter ) )
-            {
-                LLVMInitializeNVPTXAsmPrinter( );
-            }
-
-            /*
-            if( registrations.HasFlag( TargetRegistrations.Disassembler ) )
-            {
-                LLVMInitializeNVPTXDisassembler( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.AsmParser ) )
-            {
-                LLVMInitializeNVPTXAsmParser( );
-            }
-            */
+            throw new StrippedFunctionException();
         }
 
         /// <summary>Registers components for the PowerPC targets</summary>
         /// <param name="registrations">Flags indicating which components to register/enable</param>
         internal static void RegisterPowerPC( TargetRegistrations registrations = TargetRegistrations.All )
         {
-            if( registrations.HasFlag( TargetRegistrations.Target ) )
-            {
-                LLVMInitializePowerPCTarget( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.TargetInfo ) )
-            {
-                LLVMInitializePowerPCTargetInfo( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.TargetMachine ) )
-            {
-                LLVMInitializePowerPCTargetMC( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.AsmPrinter ) )
-            {
-                LLVMInitializePowerPCAsmPrinter( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.Disassembler ) )
-            {
-                LLVMInitializePowerPCDisassembler( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.AsmParser ) )
-            {
-                LLVMInitializePowerPCAsmParser( );
-            }
+            throw new StrippedFunctionException();
         }
 
         /// <summary>Registers components for SPARC targets</summary>
         /// <param name="registrations">Flags indicating which components to register/enable</param>
         internal static void RegisterSparc( TargetRegistrations registrations = TargetRegistrations.All )
         {
-            if( registrations.HasFlag( TargetRegistrations.Target ) )
-            {
-                LLVMInitializeSparcTarget( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.TargetInfo ) )
-            {
-                LLVMInitializeSparcTargetInfo( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.TargetMachine ) )
-            {
-                LLVMInitializeSparcTargetMC( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.AsmPrinter ) )
-            {
-                LLVMInitializeSparcAsmPrinter( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.Disassembler ) )
-            {
-                LLVMInitializeSparcDisassembler( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.AsmParser ) )
-            {
-                LLVMInitializeSparcAsmParser( );
-            }
+            throw new StrippedFunctionException();
         }
 
         /// <summary>Registers components for SystemZ targets</summary>
         /// <param name="registrations">Flags indicating which components to register/enable</param>
         internal static void RegisterSystemZ( TargetRegistrations registrations = TargetRegistrations.All )
         {
-            if( registrations.HasFlag( TargetRegistrations.Target ) )
-            {
-                LLVMInitializeSystemZTarget( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.TargetInfo ) )
-            {
-                LLVMInitializeSystemZTargetInfo( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.TargetMachine ) )
-            {
-                LLVMInitializeSystemZTargetMC( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.AsmPrinter ) )
-            {
-                LLVMInitializeSystemZAsmPrinter( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.Disassembler ) )
-            {
-                LLVMInitializeSystemZDisassembler( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.AsmParser ) )
-            {
-                LLVMInitializeSystemZAsmParser( );
-            }
+            throw new StrippedFunctionException();
         }
 
         /// <summary>Registers components for the WebAssembly target</summary>
         /// <param name="registrations">Flags indicating which components to register/enable</param>
         internal static void RegisterWebAssembly( TargetRegistrations registrations = TargetRegistrations.All )
         {
-            if( registrations.HasFlag( TargetRegistrations.Target ) )
-            {
-                LLVMInitializeWebAssemblyTarget( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.TargetInfo ) )
-            {
-                LLVMInitializeWebAssemblyTargetInfo( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.TargetMachine ) )
-            {
-                LLVMInitializeWebAssemblyTargetMC( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.AsmPrinter ) )
-            {
-                LLVMInitializeWebAssemblyAsmPrinter( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.Disassembler ) )
-            {
-                LLVMInitializeWebAssemblyDisassembler( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.AsmParser ) )
-            {
-                LLVMInitializeWebAssemblyAsmParser( );
-            }
+            throw new StrippedFunctionException();
         }
 
         /// <summary>Registers components for X86 targets</summary>
         /// <param name="registrations">Flags indicating which components to register/enable</param>
         internal static void RegisterX86( TargetRegistrations registrations = TargetRegistrations.All )
         {
-            if( registrations.HasFlag( TargetRegistrations.Target ) )
-            {
-                LLVMInitializeX86Target( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.TargetInfo ) )
-            {
-                LLVMInitializeX86TargetInfo( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.TargetMachine ) )
-            {
-                LLVMInitializeX86TargetMC( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.AsmPrinter ) )
-            {
-                LLVMInitializeX86AsmPrinter( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.Disassembler ) )
-            {
-                LLVMInitializeX86Disassembler( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.AsmParser ) )
-            {
-                LLVMInitializeX86AsmParser( );
-            }
+            throw new StrippedFunctionException();
         }
 
         /// <summary>Registers components for XCore targets</summary>
         /// <param name="registrations">Flags indicating which components to register/enable</param>
         internal static void RegisterXCore( TargetRegistrations registrations = TargetRegistrations.All )
         {
-            if( registrations.HasFlag( TargetRegistrations.Target ) )
-            {
-                LLVMInitializeXCoreTarget( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.TargetInfo ) )
-            {
-                LLVMInitializeXCoreTargetInfo( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.TargetMachine ) )
-            {
-                LLVMInitializeXCoreTargetMC( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.AsmPrinter ) )
-            {
-                LLVMInitializeXCoreAsmPrinter( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.Disassembler ) )
-            {
-                LLVMInitializeXCoreDisassembler( );
-            }
-
-            /*
-            if( registrations.HasFlag( TargetRegistrations.AsmParser ) )
-            {
-                LLVMInitializeXCoreAsmParser( );
-            }
-            */
+            throw new StrippedFunctionException();
         }
 
         /// <summary>Registers components for the RISCV target</summary>
         /// <param name="registrations">Flags indicating which components to register/enable</param>
         internal static void RegisterRISCV( TargetRegistrations registrations = TargetRegistrations.All )
         {
-            if( registrations.HasFlag( TargetRegistrations.Target ) )
-            {
-                LLVMInitializeRISCVTarget( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.TargetInfo ) )
-            {
-                LLVMInitializeRISCVTargetInfo( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.TargetMachine ) )
-            {
-                LLVMInitializeRISCVTargetMC( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.AsmPrinter ) )
-            {
-                LLVMInitializeRISCVAsmPrinter( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.Disassembler ) )
-            {
-                LLVMInitializeRISCVDisassembler( );
-            }
-
-            if( registrations.HasFlag( TargetRegistrations.AsmParser ) )
-            {
-                LLVMInitializeRISCVAsmParser( );
-            }
+            throw new StrippedFunctionException();
         }
 
         /// <inheritdoc/>

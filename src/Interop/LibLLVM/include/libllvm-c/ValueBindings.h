@@ -67,6 +67,9 @@ extern "C" {
     void LibLLVMDisposeValueCache( LibLLVMValueCacheRef cacheRef );
     void LibLLVMValueCacheAdd( LibLLVMValueCacheRef cacheRef, LLVMValueRef value, intptr_t handle );
     intptr_t LibLLVMValueCacheLookup( LibLLVMValueCacheRef cacheRef, LLVMValueRef valueRef );
+
+    __declspec(dllexport) void LibLLVMGetRawValues(LLVMValueRef c, char* resultBuffer);
+    __declspec(dllexport) unsigned LibLLVMGetRawValueSize(LLVMValueRef c);
 #ifdef __cplusplus
 }
 #endif

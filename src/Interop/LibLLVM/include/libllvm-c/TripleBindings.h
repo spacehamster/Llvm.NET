@@ -1,6 +1,10 @@
 #ifndef LLVM_TRIPLE_BINDINGS_H
 #define LLVM_TRIPLE_BINDINGS_H
-#include <llvm-c\Types.h>
+#if LLVM_VERSION_MAJOR < 3 || (LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR < 8)
+#include "llvm-c/Core.h"
+#else
+#include <llvm-c/Types.h>
+#endif
 
 #ifdef __cplusplus
 extern "C" {

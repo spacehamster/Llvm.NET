@@ -391,44 +391,6 @@ namespace Ubiquity.NET.Llvm.Instructions
         /// <seealso href="xref:llvm_langref#landingpad-instruction">LLVM landingpad instruction</seealso>
         /// <seealso href="xref:llvm_langref#other-operations">LLVM Other Operations</seealso>
         LandingPad = LLVMOpcode.LLVMLandingPad,
-
-        /// <summary>cleanupret instruction</summary>
-        /// <seealso cref="Instructions.CleanupReturn"/>
-        /// <seealso href="xref:llvm_langref#cleanupret-instruction">LLVM cleanupret instruction</seealso>
-        /// <seealso href="xref:llvm_langref#terminator-instructions">LLVM Terminator Instructions</seealso>
-        CleanupRet = LLVMOpcode.LLVMCleanupRet,
-
-        /// <summary>catchret instruction</summary>
-        /// <seealso cref="Instructions.CatchReturn"/>
-        /// <seealso href="xref:llvm_langref#catchret-instruction">LLVM catchret instruction</seealso>
-        /// <seealso href="xref:llvm_langref#terminator-instructions">LLVM Terminator Instructions</seealso>
-        CatchRet = LLVMOpcode.LLVMCatchRet,
-
-        /// <summary>catchpad instruction</summary>
-        /// <seealso cref="Instructions.CatchPad"/>
-        /// <seealso href="xref:llvm_langref#catchpad-instruction">LLVM catchpad instruction</seealso>
-        /// <seealso href="xref:llvm_langref#other-operations">LLVM Other Operations</seealso>
-        CatchPad = LLVMOpcode.LLVMCatchPad,
-
-        /// <summary>cleanuppad instruction</summary>
-        /// <seealso cref="Instructions.CleanupPad"/>
-        /// <seealso href="xref:llvm_langref#cleanuppad-instruction">LLVM cleanuppad instruction</seealso>
-        /// <seealso href="xref:llvm_langref#other-operations">LLVM Other Operations</seealso>
-        CleanupPad = LLVMOpcode.LLVMCleanupPad,
-
-        /// <summary>catchswitch instruction</summary>
-        /// <seealso cref="Instructions.CatchSwitch"/>
-        /// <seealso href="xref:llvm_langref#catchswitch-instruction">LLVM catchswitch instruction</seealso>
-        /// <seealso href="xref:llvm_langref#terminator-instructions">LLVM Terminator Instructions</seealso>
-        CatchSwitch = LLVMOpcode.LLVMCatchSwitch,
-
-        /// <summary>callbr instruction</summary>
-        /// <seealso href="xref::llvm_langref#i-callbr"/>
-        CallBr = LLVMOpcode.LLVMCallBr,
-
-        /// <summary>Freeze instruction</summary>
-        /// <seealso href="xref:llvm_langref#i-freeze"/>
-        Freeze = LLVMOpcode.LLVMFreeze,
     }
 
     /// <summary>Exposes an LLVM Instruction</summary>

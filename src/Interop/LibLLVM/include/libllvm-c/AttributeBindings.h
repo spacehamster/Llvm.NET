@@ -15,7 +15,11 @@
 #define LLVM_BINDINGS_LLVM_ATTRIBUTEBINDINGS_H
 
 #include <llvm-c/Core.h>
+#if LLVM_VERSION_MAJOR < 3 || (LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR < 8)
+#include "legacy/Types.h"
+#else
 #include <llvm-c/Types.h>
+#endif
 
 #include <stdint.h>
 

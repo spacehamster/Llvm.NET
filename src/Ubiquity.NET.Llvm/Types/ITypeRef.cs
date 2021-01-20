@@ -65,9 +65,6 @@ namespace Ubiquity.NET.Llvm.Types
 
         /// <summary>x86 MMX data type</summary>
         X86MMX = LLVMTypeKind.LLVMX86_MMXTypeKind,
-
-        /// <summary>Exception handler token</summary>
-        Token = LLVMTypeKind.LLVMTokenTypeKind
     }
 
     /// <summary>Interface for a Type in LLVM</summary>

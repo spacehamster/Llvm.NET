@@ -12,9 +12,8 @@
 //===----------------------------------------------------------------------===//
 
 #include "libllvm-c/IRBindings.h"
-#include "llvm/IR/DebugLoc.h"
-#include "llvm/IR/Function.h"
 #include "llvm/IR/IRBuilder.h"
+#include "NotImplementedException.h"
 
 using namespace llvm;
 
@@ -27,15 +26,7 @@ extern "C"
 
     LLVMBool LibLLVMHasUnwindDest( LLVMValueRef Invoke )
     {
-        if ( CleanupReturnInst* CRI = dyn_cast< CleanupReturnInst >( unwrap( Invoke ) ) )
-        {
-            return CRI->hasUnwindDest( );
-        }
-        else if ( CatchSwitchInst* CSI = dyn_cast< CatchSwitchInst >( unwrap( Invoke ) ) )
-        {
-            return CSI->hasUnwindDest( );
-        }
-        return 0;
+        throw NotImplementedException();
     }
 
 }

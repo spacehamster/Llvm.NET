@@ -1,9 +1,8 @@
+#include "libllvm-c/Core.h"
 #include "libllvm-c/DIBuilderBindings.h"
-#include "llvm/IR/DIBuilder.h"
-#include "llvm/IR/DebugLoc.h"
-#include "llvm/IR/DebugInfoMetadata.h"
 #include <llvm/Support/CBindingWrapping.h>
-
+#include "llvm/IR/DIBuilder.h"
+#include "NotImplementedException.h"
 using namespace llvm;
 
 namespace
@@ -12,13 +11,15 @@ namespace
     {
         return (DIT* )( Ref ? unwrap<MDNode>( Ref ) : nullptr );
     }
-}
 
+}
+DEFINE_ISA_CONVERSION_FUNCTIONS(DIBuilder, LLVMDIBuilderRef)
+DEFINE_ISA_CONVERSION_FUNCTIONS(Metadata, LLVMMetadataRef)
 extern "C"
 {
     LLVMMetadataRef LibLLVMDIBuilderCreateCompileUnit(
         LLVMDIBuilderRef Builder,
-        LibLLVMDwarfSourceLanguage Lang,
+        unsigned Lang,
         LLVMMetadataRef FileRef,
         const char* Producer,
         size_t ProducerLen,
@@ -33,19 +34,6 @@ extern "C"
         LLVMBool SplitDebugInlining,
         LLVMBool DebugInfoForProfiling )
     {
-        auto File = unwrap_maybenull<DIFile>( FileRef );
-
-        return wrap( unwrap( Builder )->createCompileUnit(
-            Lang,
-            File,
-            StringRef( Producer, ProducerLen ),
-            isOptimized,
-            StringRef( Flags, FlagsLen ),
-            RuntimeVer,
-            StringRef( SplitName, SplitNameLen ),
-            static_cast< DICompileUnit::DebugEmissionKind >( Kind ),
-            DWOId,
-            SplitDebugInlining, DebugInfoForProfiling )
-        );
+        throw NotImplementedException();
     }
 }

@@ -2,12 +2,17 @@
 #include <llvm/IR/DIBuilder.h>
 #include <llvm/IR/Module.h>
 #include <llvm/Support/CBindingWrapping.h>
-
 #include "libllvm-c/MetadataBindings.h"
+#include "NotImplementedException.h"
+#include <llvm/Support/raw_ostream.h>
 
 using namespace llvm;
 
 DEFINE_SIMPLE_CONVERSION_FUNCTIONS( MDOperand, LibLLVMMDOperandRef )
+DEFINE_ISA_CONVERSION_FUNCTIONS(Metadata, LLVMMetadataRef)
+DEFINE_SIMPLE_CONVERSION_FUNCTIONS(LLVMContext, LLVMContextRef)
+DEFINE_ISA_CONVERSION_FUNCTIONS(DIBuilder, LLVMDIBuilderRef)
+DEFINE_ISA_CONVERSION_FUNCTIONS(NamedMDNode, LLVMNamedMDNodeRef)
 
 template <typename DIT> DIT* unwrapDI( LLVMMetadataRef Ref )
 {
@@ -24,10 +29,10 @@ static LLVMDIFlags map_to_llvmDIFlags( DINode::DIFlags Flags )
     return static_cast< LLVMDIFlags >( Flags );
 }
 
-static DISubprogram::DISPFlags
+static unsigned
 pack_into_DISPFlags( bool IsLocalToUnit, bool IsDefinition, bool IsOptimized )
 {
-    return DISubprogram::toSPFlags( IsLocalToUnit, IsDefinition, IsOptimized );
+    0;
 }
 
 extern "C"
@@ -51,7 +56,7 @@ extern "C"
 
     void LibLLVMDIBuilderFinalizeSubProgram( LLVMDIBuilderRef dref, LLVMMetadataRef /*DISubProgram*/ subProgram )
     {
-        unwrap( dref )->finalizeSubprogram( unwrap<DISubprogram>( subProgram ) );
+        throw NotImplementedException();
     }
 
     LLVMMetadataRef /*DILocalScope*/ LibLLVMDILocationGetInlinedAtScope( LLVMMetadataRef /*DILocation*/ location )
@@ -82,19 +87,7 @@ extern "C"
                                                                , LLVMBool isOptimized /*= false*/
     )
     {
-        return wrap( unwrap( Builder )->createTempFunctionFwdDecl(
-            unwrapDI<DIScope>( Scope ),
-            { Name, NameLen },
-            { LinkageName, LinkageNameLen },
-            unwrapDI<DIFile>( File ),
-            LineNo,
-            unwrapDI<DISubroutineType>( Ty ),
-            ScopeLine,
-            map_from_llvmDIFlags( Flags ),
-            pack_into_DISPFlags( isLocalToUnit, isDefinition, isOptimized ),
-            nullptr,
-            nullptr,
-            nullptr ) );
+        throw NotImplementedException();
     }
 
     char const* LibLLVMMetadataAsString( LLVMMetadataRef descriptor )
@@ -178,7 +171,7 @@ extern "C"
 
     void LibLLVMNamedMDNodeClearOperands( LLVMNamedMDNodeRef namedMDNode )
     {
-        unwrap( namedMDNode )->clearOperands( );
+        unwrap( namedMDNode )->dropAllReferences( );
     }
 
     LLVMMetadataRef LibLLVMConstantAsMetadata( LLVMValueRef C )

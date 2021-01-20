@@ -386,7 +386,7 @@ namespace Ubiquity.NET.Llvm
         {
             ThrowIfDisposed( );
             name.ValidateNotNullOrWhiteSpace( nameof( name ) );
-            type.ValidateNotNull( nameof( name ) );
+            type.ValidateNotNull( nameof( type ) );
             resolver.ValidateNotNull( nameof( resolver ) );
 
             var handle = LLVMAddGlobalIFunc( ModuleHandle, name, name.Length, type.GetTypeRef( ), addressSpace, resolver.ValueHandle );
@@ -924,7 +924,7 @@ namespace Ubiquity.NET.Llvm
             buffer.ValidateNotNull( nameof( buffer ) );
             context.ValidateNotNull( nameof( context ) );
 
-            if( LLVMParseBitcodeInContext2( context.ContextHandle, buffer.BufferHandle, out LLVMModuleRef modRef ).Failed )
+            if(LLVMParseBitcodeInContext2( context.ContextHandle, buffer.BufferHandle, out LLVMModuleRef modRef ).Failed )
             {
                 throw new InternalCodeGeneratorException( Resources.Could_not_parse_bit_code_from_buffer );
             }

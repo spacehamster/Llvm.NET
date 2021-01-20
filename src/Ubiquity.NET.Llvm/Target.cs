@@ -67,9 +67,6 @@ namespace Ubiquity.NET.Llvm
         /// <summary>Default code model for JIT to the target</summary>
         JitDefault = LLVMCodeModel.LLVMCodeModelJITDefault,
 
-        /// <summary>Tiny code model</summary>
-        Tiny = LLVMCodeModel.LLVMCodeModelTiny,
-
         /// <summary>Small code model</summary>
         Small = LLVMCodeModel.LLVMCodeModelSmall,
 

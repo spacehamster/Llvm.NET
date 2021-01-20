@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 #include "llvm-c/Core.h"
-#include "llvm-c/DebugInfo.h"
+#include "legacy/Types.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -11,7 +11,7 @@ extern "C" {
     typedef enum LibLLVMDwarfAttributeEncoding
     {
 #define HANDLE_DW_ATE(ID, NAME, VERSION, VENDOR) DW_ATE_##NAME = ID,
-#include "llvm/BinaryFormat/Dwarf.def"
+#include "legacy/Dwarf.def"
         DW_ATE_lo_user = 0x80,
         DW_ATE_hi_user = 0xff
     } LibLLVMDwarfAttributeEncoding;
@@ -20,15 +20,39 @@ extern "C" {
     {
 #define HANDLE_DW_TAG(ID, NAME, VERSION, VENDOR, KIND) \
   LibLLVMDwarfTag##NAME = ID,
-#include "llvm/BinaryFormat/Dwarf.def"
+#include "legacy/Dwarf.def"
 #undef HANDLE_DW_TAG
     } LibLLVMDwarfTag;
 
+    //TODO: this should reference Metadata::MetadataKind directly
     typedef enum LibLLVMMetadataKind
     {
-#define HANDLE_METADATA_LEAF(CLASS) LibLLVMMetadataKind_##CLASS,
-#include "llvm/IR/Metadata.def"
-#undef HANDLE_METADATA_LEAF
+        LibLLVMMetadataKind_MDTuple,
+        LibLLVMMetadataKind_DILocation,
+        LibLLVMMetadataKind_GenericDINode,
+        LibLLVMMetadataKind_DISubrange,
+        LibLLVMMetadataKind_DIEnumerator,
+        LibLLVMMetadataKind_DIBasicType,
+        LibLLVMMetadataKind_DIDerivedType,
+        LibLLVMMetadataKind_DICompositeType,
+        LibLLVMMetadataKind_DISubroutineType,
+        LibLLVMMetadataKind_DIFile,
+        LibLLVMMetadataKind_DICompileUnit,
+        LibLLVMMetadataKind_DISubprogram,
+        LibLLVMMetadataKind_DILexicalBlock,
+        LibLLVMMetadataKind_DILexicalBlockFile,
+        LibLLVMMetadataKind_DINamespace,
+        LibLLVMMetadataKind_DIModule,
+        LibLLVMMetadataKind_DITemplateTypeParameter,
+        LibLLVMMetadataKind_DITemplateValueParameter,
+        LibLLVMMetadataKind_DIGlobalVariable,
+        LibLLVMMetadataKind_DILocalVariable,
+        LibLLVMMetadataKind_DIExpression,
+        LibLLVMMetadataKind_DIObjCProperty,
+        LibLLVMMetadataKind_DIImportedEntity,
+        LibLLVMMetadataKind_ConstantAsMetadata,
+        LibLLVMMetadataKind_LocalAsMetadata,
+        LibLLVMMetadataKind_MDString
     } LibLLVMMetadataKind;
 
     typedef struct LLVMOpaqueMDOperand* LibLLVMMDOperandRef;
