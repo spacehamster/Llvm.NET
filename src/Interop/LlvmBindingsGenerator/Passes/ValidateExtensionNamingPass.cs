@@ -34,6 +34,7 @@ namespace LlvmBindingsGenerator.Passes
         {
             var extensionHeaders = from tu in context.TranslationUnits
                                    where tu.IsExtensionHeader( )
+                                   where tu.FileName != "StrippedBindings.h"
                                    select tu;
 
             foreach( TranslationUnit translationUnit in extensionHeaders )
@@ -46,7 +47,7 @@ namespace LlvmBindingsGenerator.Passes
 
         public override bool VisitFunctionDecl( Function function )
         {
-            if( !function.Ignore && !function.Name.StartsWith( "LibLLVM", System.StringComparison.Ordinal ) )
+            if( !function.Ignore && !ValidName(function.Name) )
             {
                 Diagnostics.Error( "Extension function {0} in {1}, does not use correct prefix", function.Name, function.TranslationUnit.FileName );
             }
@@ -56,7 +57,7 @@ namespace LlvmBindingsGenerator.Passes
 
         public override bool VisitTypedefDecl( TypedefDecl typedef )
         {
-            if( !typedef.Name.StartsWith( "LibLLVM", System.StringComparison.Ordinal ) )
+            if( !ValidName( typedef.Name ))
             {
                 Diagnostics.Error( "Extension typeDef {0} in {1}, does not use correct prefix", typedef.Name, typedef.TranslationUnit.FileName );
             }
@@ -66,7 +67,7 @@ namespace LlvmBindingsGenerator.Passes
 
         public override bool VisitEnumDecl( Enumeration @enum )
         {
-            if( !@enum.Name.StartsWith( "LibLLVM", System.StringComparison.Ordinal ) )
+            if( !ValidName( @enum.Name ))
             {
                 Diagnostics.Error( "Extension enum {0} in {1}, does not use correct prefix", @enum.Name, @enum.TranslationUnit.FileName );
             }
@@ -76,12 +77,18 @@ namespace LlvmBindingsGenerator.Passes
 
         public override bool VisitEnumItemDecl( Enumeration.Item item )
         {
-            if( !item.Name.StartsWith( "LibLLVM", System.StringComparison.Ordinal ) )
+            if( !ValidName( item.Name ))
             {
                 Diagnostics.Error( "Extension enum item {0} in {1}, does not use correct prefix", item.Name, item.TranslationUnit.FileName );
             }
 
             return true;
+        }
+
+        private static bool ValidName(string name)
+        {
+            return name.StartsWith( "LibLLVM", System.StringComparison.Ordinal ) ||
+                name.StartsWith( "LLVM", System.StringComparison.Ordinal );
         }
     }
 }

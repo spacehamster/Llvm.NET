@@ -155,7 +155,11 @@ Tools/
 *.binlog
 *.7z
 
+/llvm.old
 /llvm
 **/GeneratedDocs/
 **/GeneratedCode/
 /src/Interop/LibLLVM/EXPORTS.g.DEF
+
+.vscode/
+Downloads/

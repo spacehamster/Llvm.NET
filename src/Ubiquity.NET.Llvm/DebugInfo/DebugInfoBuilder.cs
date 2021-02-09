@@ -133,7 +133,7 @@ namespace Ubiquity.NET.Llvm.DebugInfo
 
             var file = CreateFile( fileName, fileDirectory );
             var handle = LibLLVMDIBuilderCreateCompileUnit( BuilderHandle
-                                                          , ( LibLLVMDwarfSourceLanguage )language
+                                                          , ( uint )language
                                                           , file.MetadataHandle
                                                           , producer
                                                           , producer.Length

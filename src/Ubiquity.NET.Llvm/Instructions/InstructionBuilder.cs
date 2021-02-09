@@ -396,7 +396,6 @@ namespace Ubiquity.NET.Llvm.Instructions
         {
             LLVMValueRef landingPad = LLVMBuildLandingPad( BuilderHandle
                                                          , resultType.GetTypeRef( )
-                                                         , LLVMValueRef.Zero // personality function no longer part of instruction
                                                          , 0
                                                          , string.Empty
                                                          );
@@ -564,18 +563,6 @@ namespace Ubiquity.NET.Llvm.Instructions
         /// <param name="val">Right hand side operand</param>
         /// <returns><see cref="AtomicRMW"/></returns>
         public AtomicRMW AtomicUMin( Value ptr, Value val ) => BuildAtomicRMW( LLVMAtomicRMWBinOp.LLVMAtomicRMWBinOpUMin, ptr, val );
-
-        /// <summary>Creates an atomic FAdd instruction</summary>
-        /// <param name="ptr">Pointer to the value to update (e.g. destination and the left hand operand)</param>
-        /// <param name="val">Right hand side operand</param>
-        /// <returns><see cref="AtomicRMW"/></returns>
-        public AtomicRMW AtomicFadd( Value ptr, Value val ) => BuildAtomicRMW( LLVMAtomicRMWBinOp.LLVMAtomicRMWBinOpFAdd, ptr, val );
-
-        /// <summary>Creates an atomic FSub instruction</summary>
-        /// <param name="ptr">Pointer to the value to update (e.g. destination and the left hand operand)</param>
-        /// <param name="val">Right hand side operand</param>
-        /// <returns><see cref="AtomicRMW"/></returns>
-        public AtomicRMW AtomicFSub( Value ptr, Value val ) => BuildAtomicRMW( LLVMAtomicRMWBinOp.LLVMAtomicRMWBinOpFSub, ptr, val );
 
         /// <summary>Creates an atomic Compare exchange instruction</summary>
         /// <param name="ptr">Pointer to the value to update (e.g. destination and the left hand operand)</param>

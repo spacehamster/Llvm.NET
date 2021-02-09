@@ -73,6 +73,9 @@
 #       SizeParam - optional integer index of an out parmater that contains the size of the array [for out params]
 #
 FunctionBindings:
+  - Name: LibLLVMPrintModuleToStringWithDxcAssemblyAnnotationWriter
+    ReturnTransform: !String {Kind: DisposeMessage }
+
   - Name: LLVMMDStringInContext
     IsObsolete: True
     DeprecationMessage: "Use LLVMMDStringInContext2 instead"
@@ -597,6 +600,9 @@ FunctionBindings:
 
   - Name: LibLLVMDisposeValueCache
     IsProjected: False
+
+  - Name: LibLLVMParseBitcodeFile
+    ReturnTransform: !Status {}
 
   - Name: LLVMVerifyModule
     ReturnTransform: !Status {}

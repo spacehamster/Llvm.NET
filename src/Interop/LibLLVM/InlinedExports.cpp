@@ -1,6 +1,5 @@
 #include <llvm-c/Target.h>
-#include <llvm-c/Remarks.h>
-
+#include "NotImplementedException.h"
 
 extern "C"
 {
@@ -8,7 +7,7 @@ extern "C"
     // the core, which is where all the other remarks APIs live... Go, Figure!
     uint32_t LLVMRemarkVersion(void)
     {
-      return REMARKS_API_VERSION;
+        throw NotImplementedException();
     }
 
     // exportable wrappers around static in-lined functions

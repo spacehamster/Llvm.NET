@@ -1,28 +1,27 @@
 #include "libllvm-c/AttributeBindings.h"
-#include "llvm/IR/Attributes.h"
+#include "libllvm-c/Core.h"
 #include "llvm/IR/LLVMContext.h"
 #include "llvm/IR/Value.h"
-#include "llvm/IR/Function.h"
-#include "llvm/IR/CallSite.h"
 #include "llvm/Support/CBindingWrapping.h"
 #include <type_traits>
+#include "NotImplementedException.h"
 
 using namespace llvm;
 
 extern "C"
 {
-    char const* LibLLVMAttributeToString( LLVMAttributeRef attribute )
+    char const* LibLLVMAttributeToString(LLVMAttributeRef attribute)
     {
-        return LLVMCreateMessage( unwrap( attribute ).getAsString( ).c_str( ) );
+        throw NotImplementedException();
     }
 
-    LLVMBool LibLLVMIsTypeAttribute( LLVMAttributeRef attribute )
+    LLVMBool LibLLVMIsTypeAttribute(LLVMAttributeRef attribute)
     {
-        return unwrap( attribute ).isTypeAttribute( );
+        throw NotImplementedException();
     }
 
-    LLVMTypeRef LibLLVMGetAttributeTypeValue( LLVMAttributeRef attribute )
+    LLVMTypeRef LibLLVMGetAttributeTypeValue(LLVMAttributeRef attribute)
     {
-        return wrap(unwrap( attribute ).getValueAsType( ));
+        throw NotImplementedException();
     }
 }

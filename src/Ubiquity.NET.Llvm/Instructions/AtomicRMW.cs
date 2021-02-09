@@ -45,13 +45,7 @@ namespace Ubiquity.NET.Llvm.Instructions
         UMax = LLVMAtomicRMWBinOp.LLVMAtomicRMWBinOpUMax,
 
         /// <summary>Unsigned Min</summary>
-        UMin = LLVMAtomicRMWBinOp.LLVMAtomicRMWBinOpUMin,
-
-        /// <summary>Floating point addition</summary>
-        FAdd = LLVMAtomicRMWBinOp.LLVMAtomicRMWBinOpFAdd,
-
-        /// <summary>Floating point subtraction</summary>
-        FSub = LLVMAtomicRMWBinOp.LLVMAtomicRMWBinOpFSub
+        UMin = LLVMAtomicRMWBinOp.LLVMAtomicRMWBinOpUMin
     }
 
     /// <summary>Atomic Read-Modify-Write instruction</summary>

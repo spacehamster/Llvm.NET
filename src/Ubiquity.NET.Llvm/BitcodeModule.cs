@@ -378,7 +378,7 @@ namespace Ubiquity.NET.Llvm
         {
             ThrowIfDisposed( );
             name.ValidateNotNullOrWhiteSpace( nameof( name ) );
-            type.ValidateNotNull( nameof( name ) );
+            type.ValidateNotNull( nameof( type ) );
             resolver.ValidateNotNull( nameof( resolver ) );
 
             var handle = LLVMAddGlobalIFunc( ModuleHandle, name, name.Length, type.GetTypeRef( ), addressSpace, resolver.ValueHandle );
@@ -415,7 +415,6 @@ namespace Ubiquity.NET.Llvm
         /// the same name exists with a different signature an exception is thrown as LLVM does
         /// not perform any function overloading.
         /// </remarks>
-        [SuppressMessage( "Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters", Justification = "Specific type required by interop call" )]
         [Obsolete( "Use CreateFunction( string name, IFunctionType signature ) instead" )]
         public IrFunction AddFunction( string name, IFunctionType signature )
         {
@@ -432,7 +431,6 @@ namespace Ubiquity.NET.Llvm
         /// the same name exists with a different signature an exception is thrown as LLVM does
         /// not perform any function overloading.
         /// </remarks>
-        [SuppressMessage( "Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters", Justification = "Specific type required by interop call" )]
         public IrFunction CreateFunction( string name, IFunctionType signature )
         {
             ThrowIfDisposed( );

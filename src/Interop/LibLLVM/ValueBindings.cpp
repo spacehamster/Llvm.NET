@@ -7,6 +7,7 @@
 #include <llvm/IR/GlobalAlias.h>
 #include <llvm/IR/IRBuilder.h>
 #include <llvm/Support/CBindingWrapping.h>
+#include "NotImplementedException.h"
 
 #include "ValueCache.h"
 
@@ -14,6 +15,7 @@
 using namespace llvm;
 
 DEFINE_SIMPLE_CONVERSION_FUNCTIONS( ValueCache, LibLLVMValueCacheRef );
+DEFINE_ISA_CONVERSION_FUNCTIONS(Metadata, LLVMMetadataRef)
 
 extern "C"
 {
@@ -54,8 +56,7 @@ extern "C"
 
     void LibLLVMGlobalVariableAddDebugExpression( LLVMValueRef /*GlobalVariable*/ globalVar, LLVMMetadataRef exp )
     {
-        auto gv = unwrap<GlobalVariable>( globalVar );
-        gv->addDebugInfo( unwrap<DIGlobalVariableExpression>( exp ) );
+        throw NotImplementedException();
     }
 
     void LibLLVMFunctionAppendBasicBlock( LLVMValueRef /*Function*/ function, LLVMBasicBlockRef block )

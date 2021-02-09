@@ -38,7 +38,10 @@ namespace LlvmBindingsGenerator
                 // read in the binding configuration from the YAML file
                 // It is hoped, that going forward, the YAML file is the only thing that needs to change
                 // but either way, it helps keep the declarative part in a more easily edited format.
-                var config = new ReadOnlyConfig( YamlConfiguration.ParseFrom( configPath ) );
+                var yamlConfig = YamlConfiguration.ParseFrom( configPath );
+                string strippedPath = Path.Combine( Path.GetDirectoryName( Assembly.GetExecutingAssembly().Location ), "StrippedSymbols.txt" );
+                AddStrippedFunctions( yamlConfig, strippedPath );
+                var config = new ReadOnlyConfig( yamlConfig );
                 var library = new LibLlvmGeneratorLibrary( config, options.LlvmRoot, options.ExtensionsRoot, options.OutputPath );
                 Driver.Run( library );
             }
@@ -76,6 +79,28 @@ namespace LlvmBindingsGenerator
                 2) add entries to APIDocs for elements in generated docs but not in API Docs
                 3) Leave everything else in APIDocs, intact
             */
+        }
+
+        private static void AddStrippedFunctions(YamlConfiguration config, string path)
+        {
+            foreach(string line in File.ReadAllLines( path ))
+            {
+                if(config.FunctionBindings.ContainsKey( line ))
+                {
+                    var binding = config.FunctionBindings[line];
+                    binding.IsExported = false;
+                    binding.IsProjected = false;
+                }
+                else
+                {
+                    config.FunctionBindings.Add( new YamlFunctionBinding()
+                    {
+                        Name = line,
+                        IsExported = false,
+                        IsProjected = false
+                    } );
+                }
+            }
         }
     }
 }

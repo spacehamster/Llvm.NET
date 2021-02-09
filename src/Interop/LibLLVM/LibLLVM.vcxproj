@@ -47,12 +47,12 @@
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="$(MSBuildThisFileDirectory)..\..\..\llvm\llvm-libs.props" />
+    <Import Project="$(MSBuildThisFileDirectory)..\..\..\llvm\Llvm-Libs.props" />
     <Import Project="LlvmApplication.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="$(MSBuildThisFileDirectory)..\..\..\llvm\llvm-libs.props" />
+    <Import Project="$(MSBuildThisFileDirectory)..\..\..\llvm\Llvm-Libs.props" />
     <Import Project="LlvmApplication.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
@@ -69,19 +69,22 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;LIBLLVM_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <LanguageStandard>stdcpp14</LanguageStandard>
+      <PreprocessorDefinitions>WIN32;_ITERATOR_DEBUG_LEVEL=0;_DEBUG;_WINDOWS;_USRDLL;LIBLLVM_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <SupportJustMyCode>false</SupportJustMyCode>
       <AdditionalIncludeDirectories>include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ConformanceMode>true</ConformanceMode>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
+      <ExceptionHandling>SyncCThrow</ExceptionHandling>
+      <SuppressStartupBanner>false</SuppressStartupBanner>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
       <ModuleDefinitionFile>EXPORTS.g.DEF</ModuleDefinitionFile>
       <FullProgramDatabaseFile>true</FullProgramDatabaseFile>
+      <SuppressStartupBanner>false</SuppressStartupBanner>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -91,8 +94,8 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;LIBLLVM_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <LanguageStandard>stdcpp14</LanguageStandard>
+      <PreprocessorDefinitions>WIN32;_ITERATOR_DEBUG_LEVEL=0;NDEBUG;_WINDOWS;_USRDLL;LIBLLVM_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ConformanceMode>true</ConformanceMode>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
@@ -100,6 +103,8 @@
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalOptions>/Gw %(AdditionalOptions)</AdditionalOptions>
+      <ExceptionHandling>SyncCThrow</ExceptionHandling>
+      <SuppressStartupBanner>false</SuppressStartupBanner>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -107,10 +112,13 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <ModuleDefinitionFile>EXPORTS.g.DEF</ModuleDefinitionFile>
+      <SuppressStartupBanner>false</SuppressStartupBanner>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="EXPORTS.g.DEF" />
     <None Include="cpp.hint" />
+    <None Include="include\legacy\Dwarf.def" />
     <None Include="include\ReadMe.md" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -121,13 +129,14 @@
     <ClCompile Include="AttributeBindings.cpp" />
     <ClCompile Include="ContextBindings.cpp" />
     <ClCompile Include="DIBuilderBindings.cpp" />
+    <ClCompile Include="DxilDisassemblerBindings.cpp" />
     <ClCompile Include="ObjectFileBindings.cpp" />
     <ClCompile Include="InlinedExports.cpp" />
     <ClCompile Include="IRBindings.cpp" />
-    <ClCompile Include="LibLlvmOrcJitBindings.cpp" />
     <ClCompile Include="MetadataBindings.cpp" />
     <ClCompile Include="PassManagerBindings.cpp" />
     <ClCompile Include="ModuleBindings.cpp" />
+    <ClCompile Include="DxilBindings.cpp" />
     <ClCompile Include="TripleBindings.cpp" />
     <ClCompile Include="ValueBindings.cpp" />
   </ItemGroup>
@@ -139,19 +148,22 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\InlinedExports.h" />
+    <ClInclude Include="include\legacy\Types.h" />
     <ClInclude Include="include\libllvm-c\AnalysisBindings.h" />
     <ClInclude Include="include\libllvm-c\AttributeBindings.h" />
     <ClInclude Include="include\libllvm-c\ContextBindings.h" />
     <ClInclude Include="include\libllvm-c\DIBuilderBindings.h" />
+    <ClInclude Include="include\libllvm-c\DxilBindings.h" />
+    <ClInclude Include="include\libllvm-c\DxilDisassemblerBindings.h" />
     <ClInclude Include="include\libllvm-c\IRBindings.h" />
     <ClInclude Include="include\libllvm-c\MetadataBindings.h" />
     <ClInclude Include="include\libllvm-c\ModuleBindings.h" />
     <ClInclude Include="include\libllvm-c\ObjectFileBindings.h" />
-    <ClInclude Include="include\libllvm-c\LibLlvmOrcJitBindings.h" />
     <ClInclude Include="include\libllvm-c\PassManagerBindings.h" />
     <ClInclude Include="include\libllvm-c\TripleBindings.h" />
     <ClInclude Include="include\libllvm-c\ValueBindings.h" />
     <ClInclude Include="include\ValueCache.h" />
+    <ClInclude Include="NotImplementedException.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />

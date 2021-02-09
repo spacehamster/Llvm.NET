@@ -31,6 +31,8 @@ namespace LlvmBindingsGenerator
         /// </remarks>
         public LibLlvmGeneratorLibrary( IGeneratorConfig configuration, string llvmRoot, string extensionsRoot, string outputPath )
         {
+            llvmRoot = Path.GetFullPath( llvmRoot );
+            extensionsRoot = Path.GetFullPath( extensionsRoot );
             Configuration = configuration;
             CommonInclude = Path.Combine( llvmRoot, "include" );
             ArchInclude = Path.Combine( llvmRoot, "x64-Release", "include" );
